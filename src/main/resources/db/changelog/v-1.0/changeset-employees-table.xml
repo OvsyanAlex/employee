@@ -15,6 +15,6 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                 path="create-employees-table.sql"/>
+                 path="create-employees-table.yaml"/>
     </changeSet>
 </databaseChangeLog>

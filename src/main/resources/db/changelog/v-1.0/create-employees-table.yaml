@@ -1,0 +1,93 @@
+databaseChangeLog:
+  - changeSet:
+      id: create
+      author: Alex
+      changes:
+        - createTable:
+            tableName: employee
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: surname
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: middle_name
+                  type: varchar(200)
+              - column:
+                  name: gender
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthday
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_of_employment
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_of_dismissal
+                  type: date
+              - column:
+                  name: post
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: salary
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: director
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: department_id
+                  type: integer
+                  constraints:
+                    nullable: false
+#CREATE TABLE employees
+#(
+#    id                 BIGSERIAL PRIMARY KEY NOT NULL,
+#    surname            VARCHAR(255)          NOT NULL,
+#    name               VARCHAR(255)          NOT NULL,
+#    middle_name        VARCHAR(255),
+#    gender             VARCHAR(255)          NOT NULL,
+#    birthday           DATE                  NOT NULL,
+#    phone              VARCHAR(255)          NOT NULL,
+#    email              VARCHAR(255)          NOT NULL,
+#    date_of_employment DATE                  NOT NULL,
+#    date_of_dismissal  DATE,
+#    post               VARCHAR(255)          NOT NULL,
+#    salary             INTEGER               NOT NULL,
+#    director           BOOLEAN               NOT NULL,
+#    department_id         INTEGER               NOT NULL
+#);
