@@ -6,9 +6,9 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="2" author="alex">
-        <!--        <preConditions onFail="MARK_RAN">-->
-        <!--            <tableExists tableName="employees"/>-->
-        <!--        </preConditions>-->
+                <preConditions onFail="MARK_RAN">
+                    <tableExists tableName="employees"/>
+                </preConditions>
         <sqlFile dbms="postgresql"
                  encoding="utf8"
                  endDelimiter="\nGO"

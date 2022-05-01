@@ -8,27 +8,27 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeMapping {
-    @Autowired
-    DepartmentRepository departmentRepository;
-    @Autowired
-    DepartmentSearcher departmentSearcher;
-
-    public Employee employeeMapping(EmployeeDto employeeDto) {
-        Department department = departmentSearcher.searchDepartment(employeeDto);
-
-        return new Employee().
-                setSurname(employeeDto.getSurname()).
-                setName(employeeDto.getName()).
-                setMiddleName(employeeDto.getMiddleName()).
-                setGender(employeeDto.getGender()).
-                setBirthDay(employeeDto.getBirthDay()).
-                setPhone(employeeDto.getPhone()).
-                setEmail(employeeDto.getEmail()).
-                setDateOfEmployment(employeeDto.getDateOfEmployment()).
-                setDateOfDismissal(employeeDto.getDateOfDismissal()).
-                setPost(employeeDto.getPost()).
-                setSalary(employeeDto.getSalary()).
-                setDirector(employeeDto.isDirector()).
-                setDepartment(department);
-    }
+//    @Autowired
+//    DepartmentRepository departmentRepository;
+//    @Autowired
+//    DepartmentSearcher departmentSearcher;
+//
+//    public Employee employeeMapping(EmployeeDto employeeDto) {
+//        Department department = departmentSearcher.searchDepartment(employeeDto);
+//
+//        return new Employee().
+//                setSurname(employeeDto.getSurname()).
+//                setName(employeeDto.getName()).
+//                setMiddleName(employeeDto.getMiddleName()).
+//                setGender(employeeDto.getGender()).
+//                setBirthDay(employeeDto.getBirthDay()).
+//                setPhone(employeeDto.getPhone()).
+//                setEmail(employeeDto.getEmail()).
+//                setDateOfEmployment(employeeDto.getDateOfEmployment()).
+//                setDateOfDismissal(employeeDto.getDateOfDismissal()).
+//                setPost(employeeDto.getPost()).
+//                setSalary(employeeDto.getSalary()).
+//                setDirector(employeeDto.isDirector()).
+//                setDepartment(department);
+//    }
 }

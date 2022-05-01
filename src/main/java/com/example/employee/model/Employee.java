@@ -11,8 +11,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
-@NamedQuery(name = "Employee.findAllDepartmentEmployees",
-        query = "SELECT e FROM Employee e WHERE e.department = ?1")
+//@NamedQuery(name = "Employee.findAllDepartmentEmployees",
+//        query = "SELECT e FROM Employee e WHERE e.department = ?1")
 @NamedQuery(name = "Employee.findEmployeeById",
         query = "SELECT e FROM Employee e WHERE e.id = ?1")
 @NamedQuery(name = "Employee.updateEmployee",
@@ -88,8 +88,8 @@ public class Employee {
     @Setter
     @Column(name = "director")
     private boolean director;
-    @Getter
-    @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Department department;
+//    @Getter
+//    @Setter
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Department department;
 }
