@@ -17,8 +17,12 @@ import java.util.List;
 @RequestMapping("/employee")
 @Tag(name = "Employee controller", description = "Добавление, удаление, изменение сотрудников")
 public class EmployeeController {
-//    private final EmployeeService employeeService;
-//
+    private final EmployeeService employeeService;
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 //    @Operation(summary = "Создание сотрудника")
 //    @PostMapping("/create")
 //    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {

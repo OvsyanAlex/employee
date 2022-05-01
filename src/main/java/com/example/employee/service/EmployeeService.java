@@ -1,42 +1,33 @@
 package com.example.employee.service;
 
 
-import com.example.employee.dto.EmployeeDto;
 import com.example.employee.mapping.EmployeeMapping;
 import com.example.employee.mapping.MapStructMapper;
-import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
 import com.example.employee.util.CriteriaApiRepository;
 import com.example.employee.util.EmployeeChanger;
 import com.example.employee.util.EmployeeValidator;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class EmployeeService {
-//    private final EmployeeRepository employeeRepository;
-//    private final EmployeeMapping employeeMapping;
-//    private final DepartmentRepository departmentRepository;
-//    private final EmployeeValidator employeeValidator;
-//    private final EmployeeChanger employeeChanger;
-//    private final CriteriaApiRepository criteriaApiRepository;
-//    private final MapStructMapper mapStructMapper;
-//
-//    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapping employeeMapping, DepartmentRepository departmentRepository, EmployeeValidator employeeValidator, EmployeeChanger employeeChanger, CriteriaApiRepository criteriaApiRepository, MapStructMapper mapStructMapper) {
-//        this.employeeRepository = employeeRepository;
-//        this.employeeMapping = employeeMapping;
-//        this.departmentRepository = departmentRepository;
-//        this.employeeValidator = employeeValidator;
-//        this.employeeChanger = employeeChanger;
-//        this.criteriaApiRepository = criteriaApiRepository;
-//        this.mapStructMapper = mapStructMapper;
-//    }
-//
+    private final EmployeeRepository employeeRepository;
+    private final EmployeeMapping employeeMapping;
+    private final EmployeeValidator employeeValidator;
+    private final EmployeeChanger employeeChanger;
+    private final CriteriaApiRepository criteriaApiRepository;
+    private final MapStructMapper mapStructMapper;
+
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapping employeeMapping, EmployeeValidator employeeValidator, EmployeeChanger employeeChanger, CriteriaApiRepository criteriaApiRepository, MapStructMapper mapStructMapper) {
+        this.employeeRepository = employeeRepository;
+        this.employeeMapping = employeeMapping;
+        this.employeeValidator = employeeValidator;
+        this.employeeChanger = employeeChanger;
+        this.criteriaApiRepository = criteriaApiRepository;
+        this.mapStructMapper = mapStructMapper;
+
+    }
+
 //    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
 //
 //        EmployeeDto employeeDtoAfterValidation = employeeValidator.validateEmployee(employeeDto);

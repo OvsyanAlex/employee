@@ -70,8 +70,8 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: department_id
-                  type: integer
+                  name: department_name
+                  type: varchar(200)
                   constraints:
                     nullable: false
 #CREATE TABLE employees
