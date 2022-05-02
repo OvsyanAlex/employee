@@ -23,12 +23,14 @@ public class EmployeeController {
     public String test() {
         return "test";
     }
-//    @Operation(summary = "Создание сотрудника")
-//    @PostMapping("/create")
-//    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
-//        return employeeService.createEmployee(employeeDto);
-//    }
-//
+
+
+    @Operation(summary = "Создание сотрудника")
+    @PostMapping("/create")
+    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
+        return employeeService.createEmployee(employeeDto);
+    }
+
 //    @Operation(summary = "Поиск сотрудника по id")
 //    @GetMapping("/{id}")
 //    public EmployeeDto getEmployeeById(@PathVariable Long id) {

@@ -1,5 +1,8 @@
 package com.example.employee.util;
+
 import com.example.employee.dto.EmployeeDto;
+import com.example.employee.feignApi.Department;
+import com.example.employee.feignApi.DepartmentController;
 import com.example.employee.mapping.EmployeeMapping;
 import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
@@ -9,15 +12,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeValidator {
-//    @Autowired
-//    DepartmentRepository departmentRepository;
-//    @Autowired
-//    EmployeeMapping employeeMapping;
-//    @Autowired
-//    EmployeeRepository employeeRepository;
-//
-//
-//    public EmployeeDto validateEmployee(EmployeeDto employeeDto) {
+    @Autowired
+    DepartmentController departmentController;
+    @Autowired
+    EmployeeMapping employeeMapping;
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+
+    public Boolean validateEmployee(EmployeeDto employeeDto) {
+        //Получаем департамент
+        Department department = departmentController.getDepartment(employeeDto.getDepartment());
+        return department != null;
 //        List<Department> departments = departmentRepository.findAll();
 //        Department result = null;
 //        Employee director = null;
@@ -61,5 +67,5 @@ public class EmployeeValidator {
 //            return null;
 //        }
 //        return employeeDto;
-//    }
+    }
 }

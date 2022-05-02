@@ -1,8 +1,10 @@
 package com.example.employee.service;
 
 
+import com.example.employee.dto.EmployeeDto;
+import com.example.employee.mapping.EmployeeMapStructMapper;
 import com.example.employee.mapping.EmployeeMapping;
-import com.example.employee.mapping.MapStructMapper;
+import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
 import com.example.employee.util.CriteriaApiRepository;
 import com.example.employee.util.EmployeeChanger;
@@ -16,25 +18,26 @@ public class EmployeeService {
     private final EmployeeValidator employeeValidator;
     private final EmployeeChanger employeeChanger;
     private final CriteriaApiRepository criteriaApiRepository;
-    private final MapStructMapper mapStructMapper;
+    private final EmployeeMapStructMapper mapStructMapper;
 
-    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapping employeeMapping, EmployeeValidator employeeValidator, EmployeeChanger employeeChanger, CriteriaApiRepository criteriaApiRepository, MapStructMapper mapStructMapper) {
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapping employeeMapping, EmployeeValidator employeeValidator, EmployeeChanger employeeChanger, CriteriaApiRepository criteriaApiRepository, EmployeeMapStructMapper mapStructMapper) {
         this.employeeRepository = employeeRepository;
         this.employeeMapping = employeeMapping;
         this.employeeValidator = employeeValidator;
         this.employeeChanger = employeeChanger;
         this.criteriaApiRepository = criteriaApiRepository;
         this.mapStructMapper = mapStructMapper;
-
     }
 
-//    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-//
-//        EmployeeDto employeeDtoAfterValidation = employeeValidator.validateEmployee(employeeDto);
-//        Employee newEmployeeAfterMapping = employeeMapping.employeeMapping(employeeDtoAfterValidation);
-//        Employee newEmployeeAfterSave = employeeRepository.save(newEmployeeAfterMapping);
-//        return mapStructMapper.toEmployeeDto(newEmployeeAfterSave);
-//    }
+    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+
+        if (employeeValidator.validateEmployee(employeeDto)) {
+            Employee newEmployeeAfterMapping = employeeMapping.employeeMapping(employeeDto);
+            Employee newEmployeeAfterSave = employeeRepository.save(newEmployeeAfterMapping);
+            return mapStructMapper.toEmployeeDto(newEmployeeAfterSave);
+        } else System.out.println("Недопустимые данные EmployeeDto");
+        return null;
+    }
 //
 //    public EmployeeDto getEmployeeById(Long id) {
 //
@@ -106,5 +109,5 @@ public class EmployeeService {
 //        Department department = departmentRepository.findById(idDepartment).orElse(null);
 //        Employee employeeAfterChange = employeeRepository.save(employee.setDepartment(department).setDirector(false));
 //        return mapStructMapper.toEmployeeDto(employeeAfterChange);
-//    }
+
 }

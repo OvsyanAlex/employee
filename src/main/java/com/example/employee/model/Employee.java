@@ -1,5 +1,6 @@
 package com.example.employee.model;
 
+import com.example.employee.feignApi.Department;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,10 +14,10 @@ import java.time.LocalDate;
 
 //@NamedQuery(name = "Employee.findAllDepartmentEmployees",
 //        query = "SELECT e FROM Employee e WHERE e.department = ?1")
-@NamedQuery(name = "Employee.findEmployeeById",
-        query = "SELECT e FROM Employee e WHERE e.id = ?1")
-@NamedQuery(name = "Employee.updateEmployee",
-        query = "UPDATE Employee e SET e=?1 WHERE e.id = ?2")
+//@NamedQuery(name = "Employee.findEmployeeById",
+//        query = "SELECT e FROM Employee e WHERE e.id = ?1")
+//@NamedQuery(name = "Employee.updateEmployee",
+//        query = "UPDATE Employee e SET e=?1 WHERE e.id = ?2")
 @Entity
 @Table(name = "employees")
 @NoArgsConstructor
@@ -88,8 +89,8 @@ public class Employee {
     @Setter
     @Column(name = "director")
     private boolean director;
-//    @Getter
-//    @Setter
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Department department;
+    @Getter
+    @Setter
+    @Column(name = "department_name")
+    private String department;
 }
