@@ -7,14 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 //    List<Employee> findAllDepartmentEmployees(Department department);
-//
-//    Employee findEmployeeById(Long id);
-//
+
+    Employee findEmployeeById(Long id);
+
 //    @Query("select e FROM Employee e WHERE e.department = ?1")
 //    List<Employee> findEmployeeByDepartmentId(Department department);
 //

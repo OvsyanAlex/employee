@@ -11,6 +11,7 @@ import com.example.employee.util.EmployeeChanger;
 import com.example.employee.util.EmployeeValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class EmployeeService {
         employeeRepository.updateEmployeeDismissalDate(id, date);
     }
 
-    // переписать метод с исползованием @Query
+    // переписать метод с использованием @Query
     public List<EmployeeDto> getEmployeeByName(String name) {
         List<Employee> employees = employeeRepository.findAll();
         List<EmployeeDto> employeesForSearch = new ArrayList<>();
@@ -110,24 +111,18 @@ public class EmployeeService {
             return null;
         } else return employeesForSearch;
     }
-//
-//    @Transactional
-//    @Modifying
-//    public void changeEmployee(Long changedEmployeeId, EmployeeDto employeeDtoForUpdate) {
-//
-//        // Находим изменяемoго сотрудника
-//        Employee changedEmployee = employeeRepository.findEmployeeById(changedEmployeeId);
-//
-//        // Валидируем вносимые изменения
-//        employeeValidator.validateEmployee(employeeDtoForUpdate);
-//
-//        // Сетим изменения
-//        employeeChanger.changeEmployee(changedEmployee, employeeDtoForUpdate);
-//
-//        //сохраняем изменения
-//        employeeRepository.updateEmployee(changedEmployee, changedEmployeeId);
-//    }
-//
+
+    @Transactional
+    @Modifying
+    public void changeEmployee(Long changedEmployeeId, EmployeeDto employeeDtoForUpdate) {
+
+        // Находим изменяемoго сотрудника
+        Employee changedEmployee = employeeRepository.findEmployeeById(changedEmployeeId);
+
+        //сетим изменения и сохраняем (написать валидацию для employeeDtoForUpdate)
+        employeeRepository.save(employeeChanger.changeEmployee(changedEmployee, employeeDtoForUpdate));
+    }
+
 //    public EmployeeDto changeDepartment(Long idEmployee, Long idDepartment) {
 //        // сетим новый департамент для сотрудника и переводим его в не директора
 //        Employee employee = criteriaApiRepository.getById(idEmployee);
@@ -135,5 +130,5 @@ public class EmployeeService {
 //        Department department = departmentRepository.findById(idDepartment).orElse(null);
 //        Employee employeeAfterChange = employeeRepository.save(employee.setDepartment(department).setDirector(false));
 //        return mapStructMapper.toEmployeeDto(employeeAfterChange);
-
+//    }
 }

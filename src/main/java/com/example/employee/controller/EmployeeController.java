@@ -55,12 +55,12 @@ public class EmployeeController {
     public List<EmployeeDto> getEmployeeByName(@PathVariable String name) {
         return employeeService.getEmployeeByName(name);
     }
-//
-//    @Operation(summary = "Изменение данных сотрудника")
-//    @PutMapping("/{id}/change")
-//    public void changeEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
-//        employeeService.changeEmployee(id, employeeDto);
-//    }
+
+    @Operation(summary = "Изменение данных сотрудника")
+    @PutMapping("/{id}/change")
+    public void changeEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
+        employeeService.changeEmployee(id, employeeDto);
+    }
 //
 //    @Operation(summary = "Изменение департамента сотрудника")
 //    @PutMapping("/{id}/{department}/change")
