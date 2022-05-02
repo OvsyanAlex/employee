@@ -42,14 +42,14 @@ public class EmployeeController {
     public EmployeeDto getEmployeeDirector(@PathVariable Long id) {
         return employeeService.getEmployeeDirector(id);
     }
-//
-//    @Operation(summary = "Увольнение сотрудника")
-//    @PostMapping("/{id}/{date}/dismissal")
-//    public void dismissalEmployee(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")
-//            LocalDate date) {
-//        employeeService.dismissalEmployee(id, date);
-//    }
-//
+
+    @Operation(summary = "Увольнение сотрудника")
+    @PostMapping("/{id}/{date}/dismissal")
+    public void dismissalEmployee(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")
+            LocalDate date) {
+        employeeService.dismissalEmployee(id, date);
+    }
+
 //    @Operation(summary = "Поиск сотрудника по имени")
 //    @GetMapping("/{name}/search")
 //    public List<EmployeeDto> getEmployeeByName(@PathVariable String name) {

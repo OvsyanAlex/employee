@@ -10,7 +10,9 @@ import com.example.employee.util.CriteriaApiRepository;
 import com.example.employee.util.EmployeeChanger;
 import com.example.employee.util.EmployeeValidator;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -33,7 +35,7 @@ public class EmployeeService {
 
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-    //валидируем employeeDto, если валидация успешна сохраняем и возвращаем
+    //валидируем employeeDto, если валидация успешна сохраняем и возвращаем (переписать validateEmployee)
         if (employeeValidator.validateEmployee(employeeDto)) {
             Employee newEmployeeAfterMapping = employeeMapping.employeeMapping(employeeDto);
             Employee newEmployeeAfterSave = employeeRepository.save(newEmployeeAfterMapping);
@@ -77,20 +79,20 @@ public class EmployeeService {
         } else System.out.println("У сотрудника нет директора");
         return null;
     }
-//
-//    @Transactional
-//    public void dismissalEmployee(Long id, LocalDate date) {
-//
-//        Employee employee = employeeRepository.nativeFindEmployeeById(id);
-//
-//        // проверяем, что дата увольнения больше даты приема на работу
-//        if (date.isAfter(employee.getDateOfEmployment())) {
-//            employee.setDateOfDismissal(date);
-//        }
-//
-//        employeeRepository.updateEmployeeDismissalDate(id, date);
-//    }
-//
+
+    @Transactional
+    public void dismissalEmployee(Long id, LocalDate date) {
+        //находим Employee
+        Employee employee = employeeRepository.nativeFindEmployeeById(id);
+
+        // проверяем, что дата увольнения больше даты приема на работу
+        if (date.isAfter(employee.getDateOfEmployment())) {
+            employee.setDateOfDismissal(date);
+        } else System.out.println("Дата увольнения должна быть позже даты приема на работу");
+        // апдейтим дату увольнения
+        employeeRepository.updateEmployeeDismissalDate(id, date);
+    }
+
 //    public List<EmployeeDto> getEmployeeByName(String name) {
 //        List<Employee> employees = employeeRepository.findAll();
 //        List<EmployeeDto> employeesForSearch = new ArrayList<>();

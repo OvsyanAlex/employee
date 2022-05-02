@@ -21,11 +21,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 //    @Modifying
 //    @Query
 //    void updateEmployee(Employee changedEmployee, Long id);
-//
-//    @Query(value = "select * from employees e where e.id= :id", nativeQuery = true)
-//    Employee nativeFindEmployeeById(Long id);
-//
-//    @Modifying
-//    @Query(value = "UPDATE employees SET date_of_dismissal=?2 WHERE id = ?1", nativeQuery = true)
-//    void updateEmployeeDismissalDate(Long id, LocalDate date);
+
+    @Query(value = "select * from employees e where e.id= :id", nativeQuery = true)
+    Employee nativeFindEmployeeById(Long id);
+
+    @Modifying
+    @Query(value = "UPDATE employees SET date_of_dismissal=?2 WHERE id = ?1", nativeQuery = true)
+    void updateEmployeeDismissalDate(Long id, LocalDate date);
 }
