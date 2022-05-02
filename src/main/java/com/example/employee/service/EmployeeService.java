@@ -29,6 +29,7 @@ public class EmployeeService {
         this.mapStructMapper = mapStructMapper;
     }
 
+    //валидируем employeeDto, если валидация успешна employeeDto->Employee->Сохраняем, возвращаем Employee->employeeDto или текст
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
 
         if (employeeValidator.validateEmployee(employeeDto)) {
@@ -38,13 +39,13 @@ public class EmployeeService {
         } else System.out.println("Недопустимые данные EmployeeDto");
         return null;
     }
-//
-//    public EmployeeDto getEmployeeById(Long id) {
-//
-//        Employee employee = employeeRepository.findById(id).orElse(null);
-//        return mapStructMapper.toEmployeeDto(employee);
-//    }
-//
+
+    public EmployeeDto getEmployeeById(Long id) {
+
+        Employee employee = employeeRepository.findById(id).orElse(null);
+        return mapStructMapper.toEmployeeDto(employee);
+    }
+
 //    public EmployeeDto getEmployeeDirector(Long id) {
 //        Employee employee = employeeRepository.findById(id).orElse(null);
 //

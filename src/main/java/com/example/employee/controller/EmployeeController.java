@@ -31,12 +31,12 @@ public class EmployeeController {
         return employeeService.createEmployee(employeeDto);
     }
 
-//    @Operation(summary = "Поиск сотрудника по id")
-//    @GetMapping("/{id}")
-//    public EmployeeDto getEmployeeById(@PathVariable Long id) {
-//        return employeeService.getEmployeeById(id);
-//    }
-//
+    @Operation(summary = "Поиск сотрудника по id")
+    @GetMapping("/{id}")
+    public EmployeeDto getEmployeeById(@PathVariable Long id) {
+        return employeeService.getEmployeeById(id);
+    }
+
 //    @Operation(summary = "Информация о директоре сотрудника")
 //    @GetMapping("{id}/director")
 //    public EmployeeDto getEmployeeDirector(@PathVariable Long id) {
