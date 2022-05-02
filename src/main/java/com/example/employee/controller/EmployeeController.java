@@ -61,10 +61,10 @@ public class EmployeeController {
     public void changeEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
         employeeService.changeEmployee(id, employeeDto);
     }
-//
-//    @Operation(summary = "Изменение департамента сотрудника")
-//    @PutMapping("/{id}/{department}/change")
-//    public EmployeeDto changeDepartment(@PathVariable Long id, @PathVariable Long department) {
-//        return employeeService.changeDepartment(id, department);
-//    }
+
+    @Operation(summary = "Изменение департамента сотрудника")
+    @PutMapping("/{id}/{departmentName}/change")
+    public EmployeeDto changeDepartment(@PathVariable Long id, @PathVariable String departmentName) {
+        return employeeService.changeDepartment(id, departmentName);
+    }
 }

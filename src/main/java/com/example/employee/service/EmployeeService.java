@@ -122,13 +122,12 @@ public class EmployeeService {
         //сетим изменения и сохраняем (написать валидацию для employeeDtoForUpdate)
         employeeRepository.save(employeeChanger.changeEmployee(changedEmployee, employeeDtoForUpdate));
     }
+    // написать валидацию для departmentName
+    public EmployeeDto changeDepartment(Long employeeId, String departmentName) {
 
-//    public EmployeeDto changeDepartment(Long idEmployee, Long idDepartment) {
-//        // сетим новый департамент для сотрудника и переводим его в не директора
-//        Employee employee = criteriaApiRepository.getById(idEmployee);
-//        //Employee employee = employeeRepository.findById(idEmployee).orElse(null);
-//        Department department = departmentRepository.findById(idDepartment).orElse(null);
-//        Employee employeeAfterChange = employeeRepository.save(employee.setDepartment(department).setDirector(false));
-//        return mapStructMapper.toEmployeeDto(employeeAfterChange);
-//    }
+        Employee employee = employeeRepository.findById(employeeId).orElse(null);
+        Employee employeeAfterUpdate = employee.setDepartment(departmentName);
+        Employee employeeAfterSave = employeeRepository.save(employeeAfterUpdate);
+        return mapStructMapper.toEmployeeDto(employeeAfterSave);
+    }
 }
