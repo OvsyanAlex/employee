@@ -50,11 +50,11 @@ public class EmployeeController {
         employeeService.dismissalEmployee(id, date);
     }
 
-//    @Operation(summary = "Поиск сотрудника по имени")
-//    @GetMapping("/{name}/search")
-//    public List<EmployeeDto> getEmployeeByName(@PathVariable String name) {
-//        return employeeService.getEmployeeByName(name);
-//    }
+    @Operation(summary = "Поиск сотрудника по имени")
+    @GetMapping("/{name}/search")
+    public List<EmployeeDto> getEmployeeByName(@PathVariable String name) {
+        return employeeService.getEmployeeByName(name);
+    }
 //
 //    @Operation(summary = "Изменение данных сотрудника")
 //    @PutMapping("/{id}/change")

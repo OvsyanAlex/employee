@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,7 +36,7 @@ public class EmployeeService {
 
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-    //валидируем employeeDto, если валидация успешна сохраняем и возвращаем (переписать validateEmployee)
+        //валидируем employeeDto, если валидация успешна сохраняем и возвращаем (переписать validateEmployee)
         if (employeeValidator.validateEmployee(employeeDto)) {
             Employee newEmployeeAfterMapping = employeeMapping.employeeMapping(employeeDto);
             Employee newEmployeeAfterSave = employeeRepository.save(newEmployeeAfterMapping);
@@ -82,6 +83,7 @@ public class EmployeeService {
 
     @Transactional
     public void dismissalEmployee(Long id, LocalDate date) {
+
         //находим Employee
         Employee employee = employeeRepository.nativeFindEmployeeById(id);
 
@@ -89,20 +91,25 @@ public class EmployeeService {
         if (date.isAfter(employee.getDateOfEmployment())) {
             employee.setDateOfDismissal(date);
         } else System.out.println("Дата увольнения должна быть позже даты приема на работу");
+
         // апдейтим дату увольнения
         employeeRepository.updateEmployeeDismissalDate(id, date);
     }
 
-//    public List<EmployeeDto> getEmployeeByName(String name) {
-//        List<Employee> employees = employeeRepository.findAll();
-//        List<EmployeeDto> employeesForSearch = new ArrayList<>();
-//        for (Employee employee : employees) {
-//            if (employee.getName().equals(name)) {
-//                employeesForSearch.add(mapStructMapper.toEmployeeDto(employee));
-//            }
-//        }
-//        return employeesForSearch;
-//    }
+    // переписать метод с исползованием @Query
+    public List<EmployeeDto> getEmployeeByName(String name) {
+        List<Employee> employees = employeeRepository.findAll();
+        List<EmployeeDto> employeesForSearch = new ArrayList<>();
+        for (Employee employee : employees) {
+            if (employee.getName().equals(name)) {
+                employeesForSearch.add(mapStructMapper.toEmployeeDto(employee));
+            }
+        }
+        if (employeesForSearch.isEmpty()) {
+            System.out.println("Нет работников с таким именем");
+            return null;
+        } else return employeesForSearch;
+    }
 //
 //    @Transactional
 //    @Modifying
