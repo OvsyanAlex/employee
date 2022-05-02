@@ -37,11 +37,11 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
-//    @Operation(summary = "Информация о директоре сотрудника")
-//    @GetMapping("{id}/director")
-//    public EmployeeDto getEmployeeDirector(@PathVariable Long id) {
-//        return employeeService.getEmployeeDirector(id);
-//    }
+    @Operation(summary = "Информация о директоре сотрудника")
+    @GetMapping("{id}/director")
+    public EmployeeDto getEmployeeDirector(@PathVariable Long id) {
+        return employeeService.getEmployeeDirector(id);
+    }
 //
 //    @Operation(summary = "Увольнение сотрудника")
 //    @PostMapping("/{id}/{date}/dismissal")
