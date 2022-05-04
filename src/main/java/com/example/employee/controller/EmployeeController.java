@@ -19,11 +19,11 @@ import java.util.List;
 public class EmployeeController {
     private final EmployeeService employeeService;
 
-    @GetMapping("/test")
-    public String test() {
-        return "test";
+    @Operation(summary = "Поиск сотрудников по имени департамента")
+    @GetMapping("/{departmentName}/searcher")
+    public List<EmployeeDto> getEmployeesByDepartment(@PathVariable String departmentName) {
+        return employeeService.getEmployeesByDepartment(departmentName);
     }
-
 
     @Operation(summary = "Создание сотрудника")
     @PostMapping("/create")

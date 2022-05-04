@@ -122,6 +122,7 @@ public class EmployeeService {
         //сетим изменения и сохраняем (написать валидацию для employeeDtoForUpdate)
         employeeRepository.save(employeeChanger.changeEmployee(changedEmployee, employeeDtoForUpdate));
     }
+
     // написать валидацию для departmentName
     public EmployeeDto changeDepartment(Long employeeId, String departmentName) {
 
@@ -129,5 +130,16 @@ public class EmployeeService {
         Employee employeeAfterUpdate = employee.setDepartment(departmentName);
         Employee employeeAfterSave = employeeRepository.save(employeeAfterUpdate);
         return mapStructMapper.toEmployeeDto(employeeAfterSave);
+    }
+    //переписать findAll, написать валидацию если нет запрашиваемог департамента
+    public List<EmployeeDto> getEmployeesByDepartment(String departmentName) {
+        List<Employee> employeeList = employeeRepository.findAll();
+        List<EmployeeDto> employeeListResult = new ArrayList<>();
+        for (Employee employee : employeeList) {
+            if (employee.getDepartment() == departmentName) {
+                employeeListResult.add(mapStructMapper.toEmployeeDto(employee));
+            }
+        }
+        return employeeListResult;
     }
 }

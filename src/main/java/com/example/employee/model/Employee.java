@@ -1,6 +1,5 @@
 package com.example.employee.model;
 
-import com.example.employee.feignApi.Department;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

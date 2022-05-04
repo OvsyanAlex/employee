@@ -1,4 +1,4 @@
-package com.example.employee.feignApi;
+package com.example.employee.departmentApi;
 
 import lombok.Data;
 

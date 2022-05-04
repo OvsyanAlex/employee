@@ -1,10 +1,9 @@
 package com.example.employee.util;
 
 import com.example.employee.dto.EmployeeDto;
-import com.example.employee.feignApi.Department;
-import com.example.employee.feignApi.DepartmentController;
+import com.example.employee.departmentApi.Department;
+import com.example.employee.departmentApi.DepartmentController;
 import com.example.employee.mapping.EmployeeMapping;
-import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

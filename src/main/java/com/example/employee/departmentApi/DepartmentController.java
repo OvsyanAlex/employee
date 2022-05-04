@@ -1,4 +1,4 @@
-package com.example.employee.feignApi;
+package com.example.employee.departmentApi;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class DepartmentController {
 
-    private final ApiDepartment apiDepartment;
+    private final DepartmentApi departmentApi;
 
     @GetMapping(
             "/department/{departmentName}/search")
     public Department getDepartment(@PathVariable String departmentName) {
-        return apiDepartment.getDepartment(departmentName);
+        return departmentApi.getDepartment(departmentName);
     }
 }
