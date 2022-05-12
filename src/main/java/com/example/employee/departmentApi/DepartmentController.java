@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class DepartmentController {
 
-    private final DepartmentApi departmentApi;
+    private final ServiceFeignClient serviceFeignClient;
 
     @GetMapping(
             "/department/{departmentName}/search")
     public Department getDepartment(@PathVariable String departmentName) {
-        return departmentApi.getDepartment(departmentName);
+        return serviceFeignClient.getDepartment(departmentName);
     }
 }
