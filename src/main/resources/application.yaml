@@ -7,24 +7,22 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yaml
     enabled: true
   jpa:
-
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: none
   application:
-    name: employee # id приложения
-#  cloud:
-#    loadbalancer
-
-#    properties.javax.persistence.validation.mode: none
+    name: employee
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka # адрес eureka-server для регистрации сервиса
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
 
 server:
   port: 8083
+
 feign:
   circuitbreaker:
     enabled: true

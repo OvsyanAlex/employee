@@ -31,18 +31,18 @@ public class Employee {
     private Long id;
     @Getter
     @Setter
-    @Pattern(regexp = "[А-Яа-я-]")
+    //@Pattern(regexp = "[А-Яа-я-]")
     @Column(name = "surname")
     private String surname;
     @Getter
     @Setter
     @Column(name = "name")
-    @Pattern(regexp = "[А-Яа-я-]")
+    //@Pattern(regexp = "[А-Яа-я-]")
     private String name;
     @Getter
     @Setter
     @Column(name = "middle_name")
-    @Pattern(regexp = "[А-Яа-я-]")
+   // @Pattern(regexp = "[А-Яа-я-]")
     private String middleName;
     @Getter
     @Setter
@@ -57,7 +57,7 @@ public class Employee {
     @Getter
     @Setter
     @Column(name = "phone")
-    @Pattern(regexp = "[+0-9()[:blank:]-]")
+   // @Pattern(regexp = "[+0-9()[:blank:]-]")
     private String phone;
     @Getter
     @Setter

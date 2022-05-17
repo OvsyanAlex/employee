@@ -10,7 +10,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableCircuitBreaker
-//@EnableHystrixDashboard
 public class EmployeeApplication {
 
     public static void main(String[] args) {
